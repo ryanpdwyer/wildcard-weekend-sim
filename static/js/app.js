@@ -81,7 +81,7 @@ async function resetGamesForDemo() {
     // Reset all games to Q1 start
     if (!displayData?.games) return;
     for (const game of displayData.games) {
-        await fetch(`${API_BASE}/api/update_game`, {
+        await fetch(`${API_BASE}api/update_game`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -98,7 +98,7 @@ async function resetGamesForDemo() {
 
 async function demoTick() {
     // Fetch current state once
-    const resp = await fetch(`${API_BASE}/api/scoreboard`);
+    const resp = await fetch(`${API_BASE}api/scoreboard`);
     const data = await resp.json();
     if (!data.games) return;
 
@@ -113,7 +113,7 @@ async function demoTick() {
         if (newTime <= 0) {
             if (newQuarter >= 4) {
                 // Game ends
-                await fetch(`${API_BASE}/api/update_game`, {
+                await fetch(`${API_BASE}api/update_game`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ game_id: gameId, quarter: 5, time_remaining: 0 })
@@ -138,7 +138,7 @@ async function demoTick() {
             }
         }
 
-        await fetch(`${API_BASE}/api/update_game`, {
+        await fetch(`${API_BASE}api/update_game`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -160,7 +160,7 @@ async function runSimulation() {
     probabilityTable.innerHTML = '<div class="loading-cell">Calculating probabilities...</div>';
 
     try {
-        const response = await fetch(`${API_BASE}/api/simulate`);
+        const response = await fetch(`${API_BASE}api/simulate`);
         displayData = await response.json();
 
         if (displayData.error) {
@@ -183,7 +183,7 @@ async function refreshLiveData() {
     refreshBtn.innerHTML = '<span class="btn-icon">⏳</span> Refreshing...';
 
     try {
-        await fetch(`${API_BASE}/api/refresh`, { method: 'POST' });
+        await fetch(`${API_BASE}api/refresh`, { method: 'POST' });
         await runSimulation();
     } catch (error) {
         console.error('Error:', error);
