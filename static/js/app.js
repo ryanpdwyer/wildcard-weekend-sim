@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     refreshBtn.addEventListener('click', refreshLiveData);
     demoBtn.addEventListener('click', toggleDemoMode);
     startAutoRefresh();
+
+    // Show demo button with ?demo=1 URL param
+    if (new URLSearchParams(window.location.search).has('demo')) {
+        demoBtn.style.display = '';
+    }
 });
 
 function startAutoRefresh() {
@@ -311,6 +316,7 @@ function renderGamesTable() {
         const [away, home] = game.matchup.split(' @ ');
         const awayHelmet = `<img class="game-helmet" src="https://a.espncdn.com/i/teamlogos/nfl/500/${away.toLowerCase()}.png" alt="${away}">`;
         const homeHelmet = `<img class="game-helmet" src="https://a.espncdn.com/i/teamlogos/nfl/500/${home.toLowerCase()}.png" alt="${home}">`;
+        const statusText = game.status_class === 'pre' && game.start_time ? game.start_time : game.status;
         return `
             <div class="game-row">
                 <div class="game-teams">
@@ -319,7 +325,7 @@ function renderGamesTable() {
                     <span class="game-team"><span class="game-team-score">${game.home_score}</span>${homeHelmet}</span>
                 </div>
                 <div class="game-details">
-                    <span class="status-badge ${game.status_class}">${game.status}</span>
+                    <span class="status-badge ${game.status_class}">${statusText}</span>
                     <span class="game-line">o${game.over_under} | ${game.spread}</span>
                 </div>
             </div>

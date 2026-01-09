@@ -188,13 +188,14 @@ class ESPNProvider:
         for game_id, game in games.items():
             live_state = self.get_game_state(game_id)
             if live_state:
-                # Update with live data but keep betting lines
+                # Update with live data but keep betting lines and start_time
                 updated[game_id] = NFLGame(
                     game_id=game_id,
                     away_team=game.away_team,
                     home_team=game.home_team,
                     spread=game.spread,
                     over_under=game.over_under,
+                    start_time=game.start_time,
                     away_score=live_state.away_score,
                     home_score=live_state.home_score,
                     time_remaining_seconds=live_state.time_remaining_seconds,

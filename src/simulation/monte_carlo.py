@@ -201,26 +201,13 @@ def create_default_games() -> Dict[str, NFLGame]:
     These should be updated with actual lines before running.
     """
     return {
-        "SF @ PHI": NFLGame(
-            game_id="SF @ PHI",
-            away_team="SF",
-            home_team="PHI",
-            spread=-4.5,  # PHI favored by 4.5
-            over_under=44.5,
-        ),
-        "LAC @ NE": NFLGame(
-            game_id="LAC @ NE",
-            away_team="LAC",
-            home_team="NE",
-            spread=-3.5,  # NE favored by 3.5 (negative = home favored)
+        "LAR @ CAR": NFLGame(
+            game_id="LAR @ CAR",
+            away_team="LAR",
+            home_team="CAR",
+            spread=10.5,  # LAR favored by 10.5
             over_under=46.5,
-        ),
-        "BUF @ JAX": NFLGame(
-            game_id="BUF @ JAX",
-            away_team="BUF",
-            home_team="JAX",
-            spread=1.5,  # BUF favored by 1.5 (positive = home underdog)
-            over_under=51.5,
+            start_time="Sat 4:30 PM",
         ),
         "GB @ CHI": NFLGame(
             game_id="GB @ CHI",
@@ -228,13 +215,31 @@ def create_default_games() -> Dict[str, NFLGame]:
             home_team="CHI",
             spread=1.5,  # GB favored by 1.5
             over_under=45.5,
+            start_time="Sat 8:00 PM",
         ),
-        "LAR @ CAR": NFLGame(
-            game_id="LAR @ CAR",
-            away_team="LAR",
-            home_team="CAR",
-            spread=10.5,  # LAR favored by 10.5
+        "BUF @ JAX": NFLGame(
+            game_id="BUF @ JAX",
+            away_team="BUF",
+            home_team="JAX",
+            spread=1.5,  # BUF favored by 1.5 (positive = home underdog)
+            over_under=51.5,
+            start_time="Sun 1:00 PM",
+        ),
+        "SF @ PHI": NFLGame(
+            game_id="SF @ PHI",
+            away_team="SF",
+            home_team="PHI",
+            spread=-4.5,  # PHI favored by 4.5
+            over_under=44.5,
+            start_time="Sun 4:30 PM",
+        ),
+        "LAC @ NE": NFLGame(
+            game_id="LAC @ NE",
+            away_team="LAC",
+            home_team="NE",
+            spread=-3.5,  # NE favored by 3.5 (negative = home favored)
             over_under=46.5,
+            start_time="Sun 8:00 PM",
         ),
         "HOU @ PIT": NFLGame(
             game_id="HOU @ PIT",
@@ -242,5 +247,6 @@ def create_default_games() -> Dict[str, NFLGame]:
             home_team="PIT",
             spread=3.0,  # HOU favored by 3 (positive = away favored, PIT +3 underdog)
             over_under=39.5,
+            start_time="Mon 8:00 PM",
         ),
     }

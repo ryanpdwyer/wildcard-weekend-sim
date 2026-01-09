@@ -11,6 +11,9 @@ class NFLGame:
     spread: float  # Negative = home favored, Positive = away favored
     over_under: float
 
+    # Game info
+    start_time: str = ""  # e.g., "Sat 4:30 PM"
+
     # Live state
     away_score: int = 0
     home_score: int = 0

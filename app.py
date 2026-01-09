@@ -378,6 +378,7 @@ def build_display_data(mc_result):
             'status_class': 'final' if game.is_final else ('live' if game.quarter > 0 else 'pre'),
             'spread': spread_str,
             'over_under': game.over_under,
+            'start_time': game.start_time,
         })
 
     return {
