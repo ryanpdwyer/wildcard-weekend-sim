@@ -1,0 +1,73 @@
+Draft on 1/7/26      at 8:30pm CST	Ian	Kevin	Torry	Daniel	Ryan	Mitch	David	Nick
+Round 1	"Puka Nacua,
+WR, LAR"	"Christian McCaffrey,
+RB, SF"	"George Kittle,
+TE, SF"	"James Cook III,
+RB, BUF"	"Josh Jacobs,
+RB, GB"	"Saquon Barkley,
+RB, PHI"	"SF @ PHI:
+SF +4.5"	"Travis Etienne Jr.,
+RB, JAX"
+Round 2	"GB @ CHI:
+u45.5"	"SF @ PHI:
+o44.5"	"Drake Maye,
+QB, NE"	"Matthew Stafford,
+QB, LAR"	"A.J. Brown,
+WR, PHI"	"Josh Allen,
+QB, BUF"	"LAC @ NE:
+o46.5"	"Jalen Hurts,
+QB, PHI"
+Round 3	"LAR @ CAR:
+LAR -10.5"	"Davante Adams,
+WR, LAR"	"GB @ CHI:
+GB -1.5"	"SF @ PHI:
+u44.5"	"Trevor Lawrence,
+QB, JAX"	"LAC @ NE:
+LAC +3.5"	"Kyren Williams,
+RB, LAR"	"BUF @ JAX:
+o51.5"
+Round 4	"LAC @ NE:
+NE -3.5"	"LAR @ CAR:
+o46.5"	"HOU @ PIT:
+HOU -3"	"BUF @ JAX:
+JAX +1.5"	"Hunter Henry,
+TE, NE"	"LAC @ NE:
+u46.5"	"Nico Collins,
+WR, HOU"	"Kenneth Gainwell,
+RB, PIT"
+Round 5	"Dalton Kincaid,
+TE, BUF"	"Dallas Goedert,
+TE, PHI"	"Christian Watson,
+WR, GB"	"Colston Loveland,
+TE, CHI"	"Rhamondre Stevenson,
+RB, NE"	"TreVeyon Henderson,
+RB, NE"	"BUF @ JAX:
+BUF -1.5"	"GB @ CHI:
+o45.5"
+Round 6	"Brock Purdy,
+QB, SF"	"GB @ CHI:
+CHI +1.5"	"Woody Marks,
+RB, HOU"	"Jakobi Meyers,
+WR, JAX"	"LAR @ CAR:
+u46.5"	"LAR @ CAR:
+CAR +10.5"	"Tetairoa McMillan,
+WR, CAR"	"Brenton Strange,
+TE, JAX"
+Round 7	"Devonta Smith,
+WR, PHI"	"Caleb Williams,
+QB, CHI"	"Quentin Johnston,
+WR, LAC"	"HOU @ PIT:
+u39.5"	"HOU @ PIT:
+o39.5"	"Luther Burden III,
+WR, CHI"	"Justin Herbert,
+QB, LAC"	"SF @ PHI:
+PHI -4.5"
+Round 8	"Rico Dowdle,
+RB, CAR"	"DJ Moore,
+WR, CHI"	"BUF @ JAX:
+u51.5"	"D'Andre Swift,
+RB, CHI"	"HOU @ PIT:
+PIT +3"	"Dalton Schultz,
+TE, HOU"	"Colby Parkinson,
+TE, LAR"	"Jauan Jennings,
+WR, SF"

@@ -1,0 +1,89 @@
+Name	QB	RB	WR	TE	Flex	Game 1	Game 2	Game 3	
+Torry	0.00	0.00	0.00	0.00	0.00	0.0	0.0	0.0	0.00
+Ryan	0.00	0.00	0.00	0.00	0.00	0.0	0.0	0.0	0.00
+Nick	0.00	0.00	0.00	0.00	0.00	0.0	0.0	0.0	0.00
+Mitch	0.00	0.00	0.00	0.00	0.00	0.0	0.0	0.0	0.00
+Kevin	0.00	0.00	0.00	0.00	0.00	0.0	0.0	0.0	0.00
+Ian	0.00	0.00	0.00	0.00	0.00	0.0	0.0	0.0	0.00
+David	0.00	0.00	0.00	0.00	0.00	0.0	0.0	0.0	0.00
+Daniel	0.00	0.00	0.00	0.00	0.00	0.0	0.0	0.0	0.00
+									
+Daniel									0.00
+Matthew Stafford, QB, LAR									
+James Cook III, RB, BUF									
+Jakobi Meyers, WR, JAX									
+Colston Loveland, TE, CHI									
+D'Andre Swift, RB, CHI									
+BUF @ JAX: JAX +1.5									
+SF @ PHI: u44.5									
+HOU @ PIT: u39.5									
+									
+David									0.00
+Justin Herbert, QB, LAC									
+Kyren Williams, RB, LAR									
+Nico Collins, WR, HOU									
+Colby Parkinson, TE, LAR									
+Tetairoa McMillan, WR, CAR									
+SF @ PHI: SF +4.5									
+LAC @ NE: o46.5									
+BUF @ JAX: BUF -1.5									
+									
+Ian									0.00
+Brock Purdy, QB, SF									
+Rico Dowdle, RB, CAR									
+Puka Nacua, WR, LAR									
+Dalton Kincaid, TE, BUF									
+Devonta Smith, WR, PHI									
+LAR @ CAR: LAR -10.5									
+GB @ CHI: u45.5									
+LAC @ NE: NE -3.5									
+									
+Kevin									0.00
+Caleb Williams, QB, CHI									
+Christian McCaffrey, RB, SF									
+Davante Adams, WR, LAR									
+Dallas Goedert, TE, PHI									
+DJ Moore, WR, CHI									
+GB @ CHI: CHI +1.5									
+SF @ PHI: o44.5									
+LAR @ CAR: o46.5									
+									
+Mitch									0.00
+Josh Allen, QB, BUF									
+Saquon Barkley, RB, PHI									
+Luther Burden III, WR, CHI									
+Dalton Schultz, TE, HOU									
+TreVeyon Henderson, RB, NE									
+LAC @ NE: LAC +3.5									
+LAC @ NE: u46.5									
+LAR @ CAR: CAR +10.5									
+									
+Nick									0.00
+Jalen Hurts, QB, PHI									
+Travis Etienne Jr., RB, JAX									
+Jauan Jennings, WR, SF									
+Brenton Strange, TE, JAX									
+Kenneth Gainwell, RB, PIT									
+SF @ PHI: PHI -4.5									
+BUF @ JAX: o51.5									
+GB @ CHI: o45.5									
+									
+Ryan									0.00
+Trevor Lawrence, QB, JAX									
+Josh Jacobs, RB, GB									
+A.J. Brown, WR, PHI									
+Hunter Henry, TE, NE									
+Rhamondre Stevenson, RB, NE									
+HOU @ PIT: PIT +3									
+LAR @ CAR: u46.5									
+HOU @ PIT: o39.5									
+									
+Torry									0.00
+Drake Maye, QB, NE									
+Woody Marks, RB, HOU									
+Christian Watson, WR, GB									
+George Kittle, TE, SF									
+Quentin Johnston, WR, LAC									
+GB @ CHI: GB -1.5									
+BUF @ JAX: u51.5									
+HOU @ PIT: HOU -3									
