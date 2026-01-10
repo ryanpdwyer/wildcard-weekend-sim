@@ -230,6 +230,24 @@ class ESPNProvider:
             print(f"ESPN boxscore API error: {e}")
             return {}
 
+    def get_all_player_stats(self) -> Dict[str, PlayerStats]:
+        """
+        Get player stats for all live and completed games.
+
+        Returns:
+            Dict mapping player name to PlayerStats (combined across all games)
+        """
+        all_stats = {}
+
+        # Use cached games from last scoreboard fetch
+        for game_key, espn_game in self._game_cache.items():
+            # Only fetch stats for games that have started
+            if espn_game.status in ('in', 'post'):
+                game_stats = self.get_player_stats(espn_game.event_id)
+                all_stats.update(game_stats)
+
+        return all_stats
+
     def _parse_boxscore(self, data: dict) -> Dict[str, PlayerStats]:
         """Parse ESPN boxscore response."""
         stats = {}

@@ -7,10 +7,12 @@ from flask import Flask, jsonify, render_template, request
 from src.models.game import NFLGame
 from src.models.roster import FantasyTeam
 from src.models.bet import Bet, BetType
+from src.models.player import Position
 from src.data.loader import load_all_projections
 from src.data.scoreboard_parser import parse_scoreboard_simple
 from src.data.live_api import ESPNProvider, fetch_live_data
 from src.simulation.monte_carlo import MonteCarloSimulator, create_default_games
+from src.scoring.calculator import calculate_player_points
 
 app = Flask(__name__)
 
@@ -19,6 +21,7 @@ projections = None
 teams = None
 games = None
 espn_provider = None
+live_player_stats = {}  # Actual stats from ESPN boxscores
 
 
 def initialize():
@@ -231,7 +234,15 @@ def build_display_data(mc_result):
                         player_game = g
                         break
 
-                if player_game:
+                # Check for actual live stats first
+                if player_name in live_player_stats:
+                    # Use actual stats from ESPN boxscore
+                    actual_stats = live_player_stats[player_name]
+                    current = calculate_player_points(actual_stats, proj.position)
+                    if player_game:
+                        minutes_remaining += int(player_game.time_remaining_seconds / 60)
+                elif player_game:
+                    # Fall back to interpolation if no live stats yet
                     remaining_frac = player_game.fraction_remaining
                     current = projected * (1 - remaining_frac)
                     minutes_remaining += int(player_game.time_remaining_seconds / 60)
@@ -391,13 +402,15 @@ def build_display_data(mc_result):
 @app.route('/api/refresh', methods=['POST'])
 def refresh_data():
     """Fetch latest live data from ESPN."""
-    global games, espn_provider
+    global games, espn_provider, live_player_stats
 
     if not espn_provider:
         espn_provider = ESPNProvider()
 
     try:
         games = espn_provider.update_games(games)
+        # Also fetch live player stats for all active games
+        live_player_stats = espn_provider.get_all_player_stats()
         return jsonify({
             'success': True,
             'games': {
@@ -411,7 +424,8 @@ def refresh_data():
                     'is_final': game.is_final,
                 }
                 for game_id, game in games.items()
-            }
+            },
+            'player_stats_count': len(live_player_stats),
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
