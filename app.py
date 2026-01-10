@@ -167,7 +167,7 @@ OWNER_COLORS = {
 @app.route('/api/simulate', methods=['GET'])
 def simulate():
     """Run simulation and return complete pre-computed display data."""
-    global projections, teams, games
+    global projections, teams, games, live_player_stats
 
     if not teams or not projections:
         return jsonify({'error': 'Data not loaded'}), 500
@@ -180,6 +180,7 @@ def simulate():
             teams=teams,
             games=games,
             projections=projections,
+            current_stats=live_player_stats,
             n_sims=n_sims,
         )
         result = simulator.run()
@@ -198,7 +199,7 @@ def build_display_data(mc_result):
     """Build complete pre-computed JSON for frontend display."""
     from src.models.bet import BetType
     from src.models.game import GameResult
-    from src.scoring.calculator import calculate_fantasy_points, calculate_bet_points
+    from src.scoring.calculator import calculate_bet_points
 
     owners_data = []
 
@@ -225,29 +226,25 @@ def build_display_data(mc_result):
 
             proj = projections.get(player_name)
             if proj:
-                projected = calculate_fantasy_points(proj)
+                # Get projected points from Monte Carlo simulation
+                projected = mc_result.player_expected_points.get(player_name, 0)
 
-                # Find player's game
+                # Find player's game for minutes remaining
                 player_game = None
                 for g in games.values():
                     if proj.team in [g.away_team, g.home_team]:
                         player_game = g
                         break
 
-                # Check for actual live stats first
+                # Get current points from live stats
                 if player_name in live_player_stats:
-                    # Use actual stats from ESPN boxscore
                     actual_stats = live_player_stats[player_name]
                     current = calculate_player_points(actual_stats, proj.position)
-                    if player_game:
-                        minutes_remaining += int(player_game.time_remaining_seconds / 60)
-                elif player_game:
-                    # Fall back to interpolation if no live stats yet
-                    remaining_frac = player_game.fraction_remaining
-                    current = projected * (1 - remaining_frac)
-                    minutes_remaining += int(player_game.time_remaining_seconds / 60)
                 else:
                     current = 0
+
+                if player_game:
+                    minutes_remaining += int(player_game.time_remaining_seconds / 60)
 
                 players.append({
                     'slot': slot.upper(),

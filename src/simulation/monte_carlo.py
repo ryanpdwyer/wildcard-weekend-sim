@@ -21,6 +21,7 @@ class SimulationResult:
     score_std: Dict[str, float]
     n_simulations: int
     bet_probabilities: Dict[str, Dict[str, float]] = None  # owner -> bet_id -> prob
+    player_expected_points: Dict[str, float] = None  # player_name -> expected points
 
     def to_dict(self) -> dict:
         return {
@@ -29,6 +30,7 @@ class SimulationResult:
             'score_std': self.score_std,
             'n_simulations': self.n_simulations,
             'bet_probabilities': self.bet_probabilities,
+            'player_expected_points': self.player_expected_points,
         }
 
 
@@ -76,12 +78,14 @@ class MonteCarloSimulator:
         n_teams = len(self.teams)
         team_scores = np.zeros((n_teams, self.n_sims))
         bet_win_counts = {}  # owner -> bet_id -> win_count
+        player_points = {}  # player_name -> expected points
 
         for i, team in enumerate(self.teams):
             # Add player points
             for player_name in team.all_player_names:
                 points = self._simulate_player_points(player_name)
                 team_scores[i] += points
+                player_points[player_name] = float(np.mean(points))
 
             # Add bet points and track wins + expected points
             bet_win_counts[team.owner] = {}
@@ -123,6 +127,7 @@ class MonteCarloSimulator:
             score_std={team.owner: float(std) for team, std in zip(self.teams, score_stds)},
             n_simulations=self.n_sims,
             bet_probabilities=bet_probs,
+            player_expected_points=player_points,
         )
 
     def _simulate_player_points(self, player_name: str) -> np.ndarray:
