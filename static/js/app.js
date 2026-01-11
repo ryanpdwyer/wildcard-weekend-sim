@@ -260,11 +260,10 @@ function renderTeamsTable() {
         // Bet rows
         const betRows = owner.bets.map(bet => {
             const probColor = getProbColor(bet.probability);
-            const statusClass = bet.probability > 0.5 ? 'winning' :
-                               bet.probability < 0.5 ? 'losing' : 'pending';
+            const bgColor = getProbBgColor(bet.probability);
 
             return `
-                <div class="bet-row ${statusClass}">
+                <div class="bet-row" style="background: ${bgColor}">
                     <span class="bet-info">${bet.description}</span>
                     <span class="bet-prob" style="color: ${probColor}">${(bet.probability * 100).toFixed(0)}%</span>
                     <span class="pts cur">${bet.current_pts > 0 ? bet.current_pts.toFixed(1) : '-'}</span>
@@ -375,4 +374,22 @@ function getProbColor(prob) {
         const g = Math.floor(140 + 40 * t);
         return `rgb(${r}, ${g}, 0)`;
     }
+}
+
+function getProbBgColor(prob) {
+    // Background color: muted near 50%, stronger at extremes
+    // 50% = neutral, 65%+ = green, 35%- = red
+    const distance = Math.abs(prob - 0.5) * 2; // 0 at 50%, 1 at 0% or 100%
+    const intensity = Math.pow(distance, 1.5); // Curve for more muted middle range
+
+    if (prob > 0.5) {
+        // Green: rgb(232, 245, 233) at full intensity
+        const alpha = intensity * 0.8;
+        return `rgba(76, 175, 80, ${alpha.toFixed(2)})`;
+    } else if (prob < 0.5) {
+        // Red: rgb(255, 235, 238) at full intensity
+        const alpha = intensity * 0.8;
+        return `rgba(198, 40, 40, ${alpha.toFixed(2)})`;
+    }
+    return 'transparent';
 }
