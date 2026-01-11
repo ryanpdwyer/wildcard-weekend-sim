@@ -167,10 +167,15 @@ OWNER_COLORS = {
 @app.route('/api/simulate', methods=['GET'])
 def simulate():
     """Run simulation and return complete pre-computed display data."""
-    global projections, teams, games, live_player_stats
+    global projections, teams, games, live_player_stats, espn_provider
 
     if not teams or not projections:
         return jsonify({'error': 'Data not loaded'}), 500
+
+    # Fetch latest ESPN data before running simulation
+    if espn_provider:
+        games = espn_provider.update_games(games)
+        live_player_stats = espn_provider.get_all_player_stats()
 
     n_sims = request.args.get('n_sims', 10000, type=int)
     n_sims = min(max(n_sims, 1000), 100000)
