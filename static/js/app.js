@@ -378,18 +378,25 @@ function getProbColor(prob) {
 
 function getProbBgColor(prob) {
     // Background color: muted near 50%, stronger at extremes
-    // 50% = neutral, 65%+ = green, 35%- = red
+    // Blend from neutral gray to green (>50%) or red (<50%)
     const distance = Math.abs(prob - 0.5) * 2; // 0 at 50%, 1 at 0% or 100%
-    const intensity = Math.pow(distance, 1.5); // Curve for more muted middle range
+    const t = Math.pow(distance, 1.5); // Curve for more muted middle range
+
+    // Base gray: #f8f8f8 = rgb(248, 248, 248)
+    const baseR = 248, baseG = 248, baseB = 248;
 
     if (prob > 0.5) {
-        // Green: rgb(232, 245, 233) at full intensity
-        const alpha = intensity * 0.8;
-        return `rgba(76, 175, 80, ${alpha.toFixed(2)})`;
+        // Blend toward green: #e8f5e9 = rgb(232, 245, 233)
+        const r = Math.round(baseR + (232 - baseR) * t);
+        const g = Math.round(baseG + (245 - baseG) * t);
+        const b = Math.round(baseB + (233 - baseB) * t);
+        return `rgb(${r}, ${g}, ${b})`;
     } else if (prob < 0.5) {
-        // Red: rgb(255, 235, 238) at full intensity
-        const alpha = intensity * 0.8;
-        return `rgba(198, 40, 40, ${alpha.toFixed(2)})`;
+        // Blend toward red: #ffebee = rgb(255, 235, 238)
+        const r = Math.round(baseR + (255 - baseR) * t);
+        const g = Math.round(baseG + (235 - baseG) * t);
+        const b = Math.round(baseB + (238 - baseB) * t);
+        return `rgb(${r}, ${g}, ${b})`;
     }
-    return 'transparent';
+    return `rgb(${baseR}, ${baseG}, ${baseB})`;
 }
