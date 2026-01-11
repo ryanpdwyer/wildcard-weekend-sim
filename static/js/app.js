@@ -260,8 +260,8 @@ function renderTeamsTable() {
         // Bet rows
         const betRows = owner.bets.map(bet => {
             const probColor = getProbColor(bet.probability);
-            const statusClass = bet.status === 'winning' || bet.status === 'won' ? 'winning' :
-                               bet.status === 'losing' || bet.status === 'lost' ? 'losing' : 'pending';
+            const statusClass = bet.probability > 0.5 ? 'winning' :
+                               bet.probability < 0.5 ? 'losing' : 'pending';
 
             return `
                 <div class="bet-row ${statusClass}">
