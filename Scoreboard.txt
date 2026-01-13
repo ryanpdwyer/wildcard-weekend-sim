@@ -33,7 +33,7 @@ Brock Purdy, QB, SF
 Rico Dowdle, RB, CAR									
 Puka Nacua, WR, LAR									
 Dalton Kincaid, TE, BUF									
-Devonta Smith, WR, PHI									
+DeVonta Smith, WR, PHI									
 LAR @ CAR: LAR -10.5									
 GB @ CHI: u45.5									
 LAC @ NE: NE -3.5									
